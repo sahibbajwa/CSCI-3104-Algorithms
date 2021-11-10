@@ -1,0 +1,146 @@
+\documentclass[12pt]{article}
+\setlength{\oddsidemargin}{0in}
+\setlength{\evensidemargin}{0in}
+\setlength{\textwidth}{6.5in}
+\setlength{\parindent}{0in}
+\setlength{\parskip}{\baselineskip}
+
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{graphicx}
+\usepackage[]{algorithmicx}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\usepackage{hyperref}
+
+\newif\iftemplate
+%\templatefalse
+\templatetrue
+
+\setlength{\headsep}{36pt}
+
+\begin{document}
+
+\lhead{{\bf CSCI 3104, Algorithms \\ Problem Set 3 -- Due Thurs Feb 6 11:55pm} }
+\rhead{\iftemplate Name: \fbox{\phantom{This is a really long name}} \\ ID: \fbox{\phantom{This is a student ID}} \\ \fi {\bf Profs.\ Chen \& Grochow \\ Spring 2020, CU-Boulder}}
+\renewcommand{\headrulewidth}{0.5pt}
+
+\phantom{Test}
+
+\begin{small}
+\textit{Advice 1}:\ For every problem in this class, you must justify your answer:\ show how you arrived at it and why it is correct. If there are assumptions you need to make along the way, state those clearly.
+
+\vspace{-3mm} 
+\textit{Advice 2}:\ Informal reasoning is typically insufficient for full credit. Instead, write a logical argument, in the style of a mathematical proof.
+
+\textbf{Instructions for submitting your solutions}:
+\vspace{-5mm} 
+
+\begin{itemize}
+	\item All submissions must be easily legible.
+	\item You should submit your work through the \href{https://canvas.colorado.edu/courses/59906}{\textbf{class Canvas page}} only.
+	\item You may not need a full page for your solutions; pagebreaks are there to help Gradescope automatically find where each problem is. Even if you do not attempt every problem, please allot at least as many pages per problem (or subproblem) as are allotted in this template.
+\end{itemize}
+
+Quicklinks: \ref{1a}   \ref{1b}  \ref{2a}   \ref{2b} \ref{3} \ref{4} 
+\vspace{-4mm} 
+\end{small}
+
+
+\hrulefill
+
+\begin{enumerate}
+
+\item Solve the following recurrence relations. For each case, show your work.
+\begin{enumerate}
+             
+        \item \label{1a} $T(n) = 2T(n-1) + 1$ if $n>1$, and $T(1) = 2$.
+        % YOUR ANSWER HERE
+
+        
+        \pagebreak        
+        
+        
+	\item \label{1b} $T(n) =  3T(\frac{n}{2})+\Theta (n)$ if $n>1$, and $T(1) = \Theta (1)$. Use the plug-in/substitution/unrolling method.
+	% YOUR ANSWER HERE
+
+	\end{enumerate}
+
+\pagebreak
+\item Consider the following functions. For each of them, determine how many times is `hi' printed in terms of the input $n$. You should first write down a recurrence and then solve it \textbf{using the recursion tree method.} That means you should write down the first few levels of the recursion tree, specify the pattern, and then solve.
+
+\begin{enumerate}
+
+\item \label{2a} 
+	\begin{small}
+	\begin{verbatim}
+	def fun(n) {
+	     if (n > 1) {
+	        print( `hi' `hi' `hi' )
+	        fun(n/4)
+	        fun(n/4)
+	        fun(n/4)
+	}}
+	\end{verbatim}
+	\end{small}
+
+ % YOUR ANSWER HERE
+
+\pagebreak 
+
+\item \label{2b}
+
+\begin{small}
+	\begin{verbatim}
+	def fun(n) {
+	     if (n > 1) {
+	        for i=1 to n {
+	          print( `hi' `hi' )
+	        }
+	        fun(n/4)
+	        fun(n/4)
+	        fun(n/4)
+	}}
+	\end{verbatim}
+	\end{small}
+	
+	 % YOUR ANSWER HERE
+
+\end{enumerate}
+
+\pagebreak
+
+\item \label{3} Consider the following algorithm
+
+\begin{verbatim}
+fun(A[1, ..., 4n]):
+    if A.length == 0:
+        return 0
+    return 1 + fun(A[3, ..., 4n-2])
+\end{verbatim}
+
+\noindent {Find} a recurrence for the worst-case runtime complexity of this algorithm. Then {solve} your recurrence and get a tight bound on the worst-case runtime complexity.
+
+% YOUR ANSWER HERE
+
+\pagebreak
+
+
+\item \label{4} (Recall Problem 4 in Problem Set 1)~Given an array $A = [a_1, a_2, \cdots, a_n]$, a reverse is a pair $(a_i, a_j)$ such  that $i< j$ but $a_i > a_j$. Design a divide-and-conquer algorithm with a runtime of $O(n\log n)$ for computing the number of reverses in the array. Your solution to this question needs to include both a written explanation and an implementation of your algorithm, including:
+
+\begin{enumerate}
+\item \label{qs:a} Your algorithm has to be a divide and conquer algorithm that is modified from the Merge Sort algorithm. Explain how your algorithm works, including pseudocode. 
+\item \label{qs:b} Implement your algorithm in Python, C, C++, or Java. \textbf{You MUST submit a runnable source code file. You will not receive credit if we cannot compile your code. Do NOT simply copy/paste your code into the PDF. }
+\item \label{qs:c} Randomly generate an array of 100 numbers and use it as input to run your code. Report on both the input to and the output of your code.
+\end{enumerate}
+
+ % YOUR ANSWER HERE
+
+
+
+\end{enumerate}
+
+
+\end{document}
+
+

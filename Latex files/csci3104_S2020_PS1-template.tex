@@ -1,0 +1,170 @@
+\documentclass[12pt]{article}
+%\usepackage[left=1in,right=1in,top=1in,bottom=1in]{geometry}
+\setlength{\oddsidemargin}{0in}
+\setlength{\evensidemargin}{0in}
+\setlength{\textwidth}{6.5in}
+\setlength{\parindent}{0in}
+\setlength{\parskip}{\baselineskip}
+
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{graphicx}
+\usepackage[]{algorithmicx}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\usepackage{hyperref}
+
+\newif\iftemplate
+%\templatefalse
+\templatetrue
+
+\setlength{\headsep}{36pt}
+
+\begin{document}
+
+\lhead{{\bf CSCI 3104, Algorithms \\ Problem Set 1 -- Due Jan 24 11:55pm} }
+\rhead{\iftemplate Name: \fbox{\phantom{This is a really long name}} \\ ID: \fbox{\phantom{This is a student ID}} \\ \fi {\bf Profs.\ Chen \& Grochow \\ Spring 2020, CU-Boulder}}
+\renewcommand{\headrulewidth}{0.5pt}
+
+\phantom{Test}
+
+\begin{small}
+\textit{Advice 1}:\ For every problem in this class, you must justify your answer:\ show how you arrived at it and why it is correct. If there are assumptions you need to make along the way, state those clearly.
+
+\vspace{-3mm} 
+\textit{Advice 2}:\ Informal reasoning is typically insufficient for full credit. Instead, write a logical argument, in the style of a mathematical proof.
+%\vspace{-4mm} 
+
+\textbf{Instructions for submitting your solutions}:
+\vspace{-5mm} 
+
+\begin{itemize}
+	\item The solutions \textbf{should be typed} and we cannot accept hand-written solutions. \href{http://ece.uprm.edu/~caceros/latex/introduction.pdf}{Here's a short intro to \LaTeX.}
+	\item You should submit your work through the \href{https://canvas.colorado.edu/courses/59906}{\textbf{class Canvas page}} only.
+	\item You may not need a full page for your solutions; pagebreaks are there to help Gradescope automatically find where each problem is. Even if you do not attempt every problem, please submit this template of at least 9 pages (or Gradescope has issues with it).
+	%\item If you don't have an account on it, sign up for one using your CU email. You should have gotten an email to sign up. If your name based CU email doesn't work, try the identikey@colorado.edu version. 
+	%\item Gradescope will only accept \textbf{.pdf} files (except for code files that should be submitted separately on Gradescope if a problem set has them) and \textbf{try to fit your work in the box provided}. 
+	%\item You cannot submit a pdf which has less pages than what we provided you as Gradescope won't allow it. 
+\end{itemize}
+
+Quicklinks: \ref{1} \ref{2a} \ref{2b} \ref{2c} \ref{3} \ref{4a} \ref{4b} \ref{4c} \ref{4d}
+\vspace{-4mm} 
+\end{small}
+
+
+\hrulefill
+
+\begin{enumerate}
+
+\item	\label{1} {\itshape What are the three components of a loop invariant proof? Write a 1--2-sentence description for each one.}\\
+
+% YOUR ANSWER HERE
+
+\pagebreak
+
+\item {\itshape Identify and state a useful loop invariant in the following algorithms. You \emph{do not} need to prove anything about it.}
+\begin{enumerate}
+\item \label{2a} 
+	\begin{small}
+	\begin{verbatim}
+	FindMinElement(A) : //array A is not empty
+	    ret = A[length(A)]
+	    for i = 1 to length(A)-1 {
+	        if A[length(A)-i] < ret{
+	            ret = A[length(A)-i]	           
+	    }}
+	    return ret
+	\end{verbatim}
+	\end{small}
+
+% YOUR ANSWER HERE
+
+\pagebreak
+
+\item \label{2b} 
+	\begin{small}
+	\begin{verbatim}
+	LinearSearch(A, v) : //array A is not empty and has no duplicates 
+	    ret = -1 //index -1 implies the element haven't been found yet
+	    for i = 1 to length(A) {
+	        if A[i] == v{
+	            ret = i	           
+	    }}
+	    return ret
+	\end{verbatim}
+	\end{small}
+
+% YOUR ANSWER HERE
+
+\pagebreak
+
+\vspace{4mm}
+
+\item \label{2c}
+    \begin{small}
+	\begin{verbatim}
+	ProductArray(A) : //array A is not empty
+	    product = 1
+	    for i = 1 to length(A) {
+	        product = product * A[i]    
+	    }
+	    return product
+	\end{verbatim}
+	\end{small}
+\end{enumerate}
+
+% YOUR ANSWER HERE
+
+\pagebreak
+
+\item \label{3} {\itshape The algorihtm \ref{2a} is a standard find-min operation: it is supposed to return the element of minimum value in $A$. Use a loop invariant proof to show the algorithm \ref{2a} from the preceding question is correct.} \\
+
+Here is a scaffold of the proof to get you started.
+
+We will use the following as our loop invariant: [your loop invariant here]
+
+\textbf{Initialization:} [your proof of initialization here]
+
+\textbf{Maintenance:} [state the maintenance condition you are proving here, then prove it]
+
+\textbf{Termination:} [your proof of what happens when the loop terminates here]
+
+[Remember to finish up the proof of correctness of the algorithm---proving that the algorithm returns the correct value---which is at least one small step beyond the termination of the for loop.]
+
+\pagebreak
+
+\item {\itshape Let $A = [ a_{1}, a_{2}, \ldots, a_{n} ]$ be an array of numbers. Let's define a \textit{`reverse'} as a pair of distinct indices $i, j \in \{ 1, 2, \ldots, n\}$ such that $i < j$ but $a_{i} > a_{j}$; i.e., $a_{i}$ and $a_{j}$ are out of order.
+
+For example - In the array A = [1, 3, 5, 2, 4, 6], (3, 2), (5, 2) and (5, 4) are the only reverses i.e. the total number of reverses is 3. } 
+\begin{enumerate}
+\item \label{4a} {\itshape Let $A$ be an arbitrary array of length $n$. At most, how many reverses can $A$ contain in terms of the array size $n$? Explain your answer with a short statement.}\\
+
+% YOUR ANSWER HERE
+
+\pagebreak 
+
+\item \label{4b} {\itshape We say that $A$ is sorted if $A$ has no reverses. Design a sorting algorithm that, on each pass through $A$, examines
+each pair of consecutive elements. If a consecutive pair forms a reverse, the algorithm swaps the elements (to fix the out of order pair). For instance, if your array A was [4,2,7,3,6,9,10], your first pass should swap 4 and 2, then compare (but not swap) 4 and 7, then swap 7 and 3, then swap 7 and 6, etc. Formulate pseudo-code for this algorithm, using nested for loops. \textbf{Hint:} After the first pass of the outer loop think about where the largest element would be. The second pass can then safely ignore the largest element because it's already in it's desired location. You should keep repeating the process for all elements not in their desired spot.}\\
+
+% YOUR ANSWER HERE
+
+\pagebreak
+
+\item \label{4c} {\itshape Your algorithm has an inner loop and an outer loop. Provide the ``useful'' loop invariant (LI) for the inner loop.You don't need to show the complete LI proof.} \\
+
+% YOUR ANSWER HERE
+
+\pagebreak
+
+\item \label{4d} {\itshape Assume that the inner loop works correctly. Using a loop-invariant proof for the outer loop, formally prove that your pseudo-code correctly sorts the given array. Be sure that your loop invariant and proof covers the initialization, maintenance, and termination conditions. }
+
+% YOUR ANSWER HERE
+
+
+\pagebreak
+
+\end{enumerate}
+\end{enumerate}
+\end{document}
+
+
